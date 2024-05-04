@@ -39,7 +39,7 @@ pub trait SchemaBuilder: TableBuilder + IndexBuilder + ForeignKeyBuilder + ViewB
 
 pub trait QuotedBuilder {
     /// The type of quote the builder uses.
-    fn quote(&self) -> char;
+    fn quote(&self) -> Quote;
 }
 
 pub trait EscapeBuilder {
@@ -81,7 +81,7 @@ pub trait EscapeBuilder {
                 .unwrap();
                 escape = false;
             } else {
-                write!(output, "{}", c).unwrap();
+                write!(output, "{c}").unwrap();
             }
         }
         output

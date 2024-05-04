@@ -10,13 +10,15 @@ use super::*;
 #[derive(Default, Debug)]
 pub struct SqliteQueryBuilder;
 
+const QUOTE: Quote = Quote(b'"', b'"');
+
 impl GenericBuilder for SqliteQueryBuilder {}
 
 impl SchemaBuilder for SqliteQueryBuilder {}
 
 impl QuotedBuilder for SqliteQueryBuilder {
-    fn quote(&self) -> char {
-        '"'
+    fn quote(&self) -> Quote {
+        QUOTE
     }
 }
 

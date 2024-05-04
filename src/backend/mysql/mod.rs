@@ -10,6 +10,8 @@ use super::*;
 #[derive(Default, Debug)]
 pub struct MysqlQueryBuilder;
 
+const QUOTE: Quote = Quote(b'`', b'`');
+
 pub type MySqlQueryBuilder = MysqlQueryBuilder;
 
 impl GenericBuilder for MysqlQueryBuilder {}
@@ -17,8 +19,8 @@ impl GenericBuilder for MysqlQueryBuilder {}
 impl SchemaBuilder for MysqlQueryBuilder {}
 
 impl QuotedBuilder for MysqlQueryBuilder {
-    fn quote(&self) -> char {
-        '`'
+    fn quote(&self) -> Quote {
+        QUOTE
     }
 }
 
